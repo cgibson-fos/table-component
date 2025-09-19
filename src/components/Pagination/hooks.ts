@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PaginationContext, PaginationContextValue } from "./context";
+import { PaginationContext } from "./context";
 import { PaginationSettings } from "./types";
 
 export interface UsePaginationHookResult {
@@ -7,6 +7,7 @@ export interface UsePaginationHookResult {
 
     changePage: (page: number) => void
     changePageLimit: (limit: number) => void
+    setTotal: (total: number) => void
 }
 
 export function usePagination(): UsePaginationHookResult {
@@ -14,22 +15,25 @@ export function usePagination(): UsePaginationHookResult {
     if (!context)
         throw new Error("Must be with the <PaginationController />.")
 
-    const { limit, page, totalCount, setLimit, setPage } = context
-    
+    const { limit, page, totalCount, setLimit, setPage, setTotalCount } = context
+    const totalPages = Math.ceil(totalCount / limit)
+
     return {
         pagination: { 
             limit, 
             page, 
             totalCount,
-            totalPages: Math.ceil(totalCount / limit)
+            totalPages,
          },
 
         changePage: (page: number) => {
-            setPage(page)
+            setPage(Math.min(Math.max(page, 0), totalPages - 1))
         },
 
         changePageLimit: (limit: number) => {
             setLimit(limit)
-        }
+        },
+
+        setTotal: setTotalCount
     }
 }

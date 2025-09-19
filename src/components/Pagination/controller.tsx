@@ -6,7 +6,7 @@ export function PaginationController(props: PropsWithChildren): JSX.Element {
     const { children } = props
 
     const [limit, setLimit] = useState<number>(DEFAULT_PAGE_LIMIT)
-    const [page, setPage] = useState<number>(10)
+    const [page, setPage] = useState<number>(0)
     const [totalCount, setTotalCount] = useState<number>(103947)
 
     const context: PaginationContextValue = {
