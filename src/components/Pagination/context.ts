@@ -1,13 +1,13 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 export interface PaginationContextValue {
     limit: number,
     page: number,
     totalCount: number,
 
-    setLimit: (limit: number) => void,
-    setPage: (page: number) => void,
-    setTotalCount: (count: number) => void,
+    setLimit: Dispatch<SetStateAction<number>>,
+    setPage: Dispatch<SetStateAction<number>>,
+    setTotalCount: Dispatch<SetStateAction<number>>,
 }
 
 export const PaginationContext = createContext<PaginationContextValue>({

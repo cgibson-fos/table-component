@@ -31,7 +31,11 @@ export function usePagination(): UsePaginationHookResult {
         },
 
         changePageLimit: (limit: number) => {
-            setLimit(limit)
+            setLimit(prev => {
+                const newPage = Math.floor(page / (limit / prev))
+                setPage(newPage)
+                return limit
+            })
         },
 
         setTotal: setTotalCount
