@@ -9,6 +9,7 @@ import { HiddenButtonGroup } from "./Buttons/HiddenButtonGroup";
 import { PageButtonGroup } from "./Buttons/PageButtonGroup";
 import { PageButtons } from "./Buttons/PageButtons";
 import { PageButton } from "./Buttons/PageButton";
+import { CommonPaginationControls } from "./CommonPaginationControls";
 
 export function Pagination(props: PropsWithChildren): JSX.Element {
     const { children } = props
@@ -19,6 +20,7 @@ export function Pagination(props: PropsWithChildren): JSX.Element {
 }
 
 Pagination.PageButton = PageButton
+Pagination.CommonControls = CommonPaginationControls
 Pagination.CommonPageButtons = CommonPageButtons
 Pagination.FirstPageButton = FirstPageButton
 Pagination.HiddenButtonGroup = HiddenButtonGroup

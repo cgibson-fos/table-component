@@ -1,7 +1,6 @@
-import { Box, Container, Stack } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Pagination } from './components/Pagination';
 import { UsersTable } from './components/UsersTable';
-import { UsersProvider } from './components/UsersProvider';
 import { Table } from './components/Table';
 
 function App() {
@@ -9,20 +8,10 @@ function App() {
     <Container sx={{ padding: "20px 10px" }}>
       <Pagination>
         <Box sx={{ mb: '20px' }}>
-          <UsersProvider>
-            <UsersTable>
-              <Table.Headers />
-              <Table.Body />
-            </UsersTable>
-          </UsersProvider>
+          <UsersTable />
         </Box>
         <Container>
-          <Stack direction="row" alignItems="center">
-            <Box>
-              <Pagination.PageLimitSelector autoWidth label="Limit" />
-            </Box>
-            <Pagination.CommonPageButtons />
-          </Stack>
+          <Pagination.CommonControls />
         </Container>
       </Pagination>
     </Container>
